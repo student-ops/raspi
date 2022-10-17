@@ -1,21 +1,12 @@
-import RPi.GPIO as GPIO
+import requests
 
-from time import sleep
+headers = {
+    # Already added when you pass json=
+    # 'Content-Type': 'application/json',
+}
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(24,GPIO.OUT)
-GPIO.setup(25,GPIO.OUT)
+json_data = {
+    'state': 'pushed',
+}
 
-
-try:
-while True:
-    if GPIO.input(24) == GPIO.HIGH:
-        GPIO.output(25,GPIO.HIGH)
-    else:
-        GPIO.output(25,GPIO.LOW)
-    sleep(0.01)
-
-except KeyboardInterrupt:
-    pass
-
-GPIO.cleanup()
+response = requests.post('http://18.183.196.94:8080/json', headers=headers, json=json_data)
