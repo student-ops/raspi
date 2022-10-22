@@ -6,7 +6,7 @@ headers = {
 }
 
 json_data = {
-    'state': 'pushed',
+    'voice': 'こんにちは',
 }
 
 response = requests.post('http://18.183.196.94:8080/json', headers=headers, json=json_data)
