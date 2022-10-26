@@ -12,6 +12,10 @@ json_data = {
 text  = 'hello from mac'
 json_resp = None
 
-response = requests.post('http://18.183.196.94:50021/audio_query?speaker=1', params ={"text": text, "speaker": 1} )
+# response = requests.post('http://18.183.196.94:50021/audio_query?speaker=1', params ={"text": text, "speaker": 1} )
 
-print(response)
+# response =  requests.post('http://18.183.196.94:50021/audio_query', params ={"text": text, "speaker": 1})
+# response = requests.gess('http://localhost:8080/echo')
+print(response.content)
+
+
