@@ -8,7 +8,7 @@ json_data = {
 
 # url ='http://18.183.196.94:8081/handle'
 header = {'Content-Type':'application/json'}
-url ='http://18.183.196.94:8081'
+url ='http://localhost:80/handle'
 # url ='http://localhost:8081'
 d = json.dumps(json_data)
 response = requests.post(url,headers = header,data = d)
