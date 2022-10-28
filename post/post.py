@@ -1,7 +1,7 @@
 import requests
 # from playsound import playsound
 import json
-
+# from os import chdir
 json_data = {
     "action": "echo"
 }
@@ -17,6 +17,8 @@ print("respose status "+str(response.status_code))
 f = open("audio3.wav","wb")
 f.write(response.content)
 f.close()
+# chdir("/Users/lakky/raspy/post")
+# playsound("audio3.wav")
 
 
 
