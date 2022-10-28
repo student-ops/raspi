@@ -1,0 +1,4 @@
+curl -s \
+    -H "Content-Type: application/json" \
+    -X POST \
+    "http://18.183.196.94:8081"
