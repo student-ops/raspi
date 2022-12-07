@@ -3,7 +3,7 @@ sys.path.append('../')
 
 from post import json_to_audio
 from aruduino_sync import read_tempereture
-text = "今の気温は" + str(read_tempereture.readTempretur) +"度です"
+text = "今の気温は" + str(read_tempereture.readTempreture) +"度です"
 json_data = {
         "action": "speak",
         "speak" : {
@@ -13,7 +13,7 @@ json_data = {
 }
 
 print(json_to_audio.audioPost(json_data,"test"))
-playsound("../audio/test.wav")
+# playsound("../audio/test.wav")
 
 
 
