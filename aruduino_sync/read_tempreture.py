@@ -6,4 +6,5 @@ def readTempreture():
     ser.flush()
     ser.write(b"Hello from Raspberry Pi!\n")
     temp = ser.readline().decode('utf-8').rstrip()
+    print(temp)
     return temp
