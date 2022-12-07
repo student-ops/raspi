@@ -13,6 +13,7 @@ json_data = {
 }
 
 print(json_to_audio.audioPost(json_data,"test"))
+playsound("../audio/test.wav")
 
 
 
