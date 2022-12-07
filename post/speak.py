@@ -11,7 +11,7 @@ json_data = {
 }
 
 # url ='http://18.183.196.94/handle'
-url ='http://localhost:8080/handle'
+# url ='http://localhost:8080/handle'
 # url = 'http://localhost:8080/speak'
 header = {'Content-Type':'application/json'}
 d = json.dumps(json_data)
