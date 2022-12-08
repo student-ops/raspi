@@ -17,7 +17,7 @@ if __name__ == '__main__':
           }
   }
   if(json_to_audio.audioPost(json_data,"temp")):
-    playsound("../audio/tmep.wav")
+    playsound("../audio/temp.wav")
 
 
 
