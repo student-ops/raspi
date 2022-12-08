@@ -3,6 +3,7 @@ sys.path.append('../')
 
 from post import json_to_audio
 from aruduino_sync import tempreture
+from playsound import playsound
 
 if __name__ == '__main__':
   temp = str(tempreture.readTemp())
@@ -15,9 +16,8 @@ if __name__ == '__main__':
               "content":text
           }
   }
-
-  print(json_to_audio.audioPost(json_data,"test"))
-  # playsound("../audio/test.wav")
+  if(json_to_audio.audioPost(json_data,"temp")):
+    playsound("../audio/tmep.wav")
 
 
 

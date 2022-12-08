@@ -3,10 +3,10 @@ import requests
 import json
 # from os import chdir
 def audioPost(json_data,file_name):
-    url ='http://18.183.196.94/handle'
+    ipaddress = "35.78.238.244"
+    url ="http://" +ipaddress +"/handle"
     header = {'Content-Type':'application/json'}
     d = json.dumps(json_data)
-    print(d)
     response = requests.post(url,headers = header,data=d)
     if response.status_code == 200:
         dest = "../audio/" + file_name + ".wav"
