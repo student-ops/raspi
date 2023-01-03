@@ -7,7 +7,7 @@ from playsound import playsound
 
 if __name__ == '__main__':
   temp = str(tempreture.readTemp())
-  text = "今の気温は" + temp +"度です"
+  text = "今の気温は" + temp +"℃です"
   print(text)
   json_data = {
           "action": "speak",
