@@ -2,9 +2,7 @@ import requests
 # from playsound import playsound
 import json
 # from os import chdir
-def audioPost(json_data,file_name):
-    ipaddress = "35.78.238.244"
-    url ="http://" +ipaddress +"/handle"
+def audioPost(json_data,file_name,url):
     header = {'Content-Type':'application/json'}
     d = json.dumps(json_data)
     response = requests.post(url,headers = header,data=d)
