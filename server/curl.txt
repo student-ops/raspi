@@ -1,0 +1,2 @@
+curl -X POST -H 'Content-Type:application/json' -d '{"name":"test","id":"21"}' localhost:8000/items/
+curl -X POST  -H 'Content-Type:application/octet-stream' -d 'hello-world' localhost:8000/items/

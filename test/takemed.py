@@ -23,6 +23,3 @@ if __name__ == '__main__':
   if(json_to_audio.audioPost(json_data,"medicine",url)):
     if(local != True):
       playsound("../audio/temp.wav")
-
-
-
