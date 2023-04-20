@@ -2,10 +2,10 @@ import sys
 sys.path.append('../')
 
 from post import json_to_audio
-from playsound import playsound
+# from playsound import playsound
 
 if __name__ == '__main__':
-  temp = 12
+  temp = "12"
   text = "今の気温は" + temp +"℃です"
   url = "http://10.17.42.2/handle"
   print(text)
@@ -16,5 +16,5 @@ if __name__ == '__main__':
               "content":text
           }
   }
-  if(json_to_audio.audioPost(json_data,"temp",url)):
-    playsound("../audio/temp.wav")
+  json_to_audio.audioPost(json_data,"temp",url)
+    # playsound("../audio/temp.wav")
