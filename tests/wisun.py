@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../')
+sys.path.append('../src')
 
 from post import json_to_audio
 # from playsound import playsound
@@ -17,4 +17,4 @@ if __name__ == '__main__':
           }
   }
   json_to_audio.audioPost(json_data,"temp",url)
-    # playsound("../audio/temp.wav")
+  # playsound("../audio/temp.wav")
