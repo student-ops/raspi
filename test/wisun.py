@@ -7,7 +7,7 @@ from post import json_to_audio
 if __name__ == '__main__':
   temp = "12"
   text = "今の気温は" + temp +"℃です"
-  url = "http://10.17.42.2/handle"
+  url = "http://10.17.42.2:8080/handle"
   print(text)
   json_data = {
           "action": "speak",
