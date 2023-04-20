@@ -2,7 +2,7 @@ import sys
 sys.path.append('../src')
 
 from post import json_to_audio
-from aruduino_sync import tempreture
+from aruduino_sync import witemp 
 from playsound import playsound
 
 if __name__ == '__main__':
