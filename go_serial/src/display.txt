@@ -1,0 +1,6 @@
+10 Lclr
+20 Bme A,B,C
+30 Lpos=0
+40 Lprint A/10;".";A%10;" ";B/10;"%"
+50 Lpos=64
+60 Lprint C/10;".";C%10;"hP"
