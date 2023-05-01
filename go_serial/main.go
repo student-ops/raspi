@@ -3,17 +3,15 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"go.bug.st/serial"
 	"log"
 	"os"
-	"strings"
 	"time"
+
+	"go.bug.st/serial"
 )
 
-func main() {
-
-	//read program
-	file, err := os.Open("src/printtmp.txt")
+func ReadProgram(filename string) string {
+	file, err := os.Open(filename)
 	if err != nil {
 		panic(err)
 	}
@@ -22,7 +20,7 @@ func main() {
 	scanner := bufio.NewScanner(file)
 	var programLines []string
 	for scanner.Scan() {
-		programLines = append(programLines, scanner.Text()+"\r")
+		programLines = append(programLines, scanner.Text()+"\r\n") // ここを変更
 	}
 	if err := scanner.Err(); err != nil {
 		panic(err)
@@ -33,34 +31,45 @@ func main() {
 		program = append(program, []byte(line)...)
 	}
 
-	//serial connection
+	return string(program)
+}
+
+func programExecuteLoop(program string, port serial.Port) {
+
+	//execute program
+	fmt.Println("serial connected")
+	port.Write([]byte("edit 1 \r"))
+	time.Sleep(100 * time.Millisecond)
+	n, err := port.Write([]byte(program))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Printf("Sent %v bytes \n", n)
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("edit 0 \r"))
+	time.Sleep(100 * time.Millisecond)
+
+	port.Write([]byte("run \r"))
+
+}
+func main() {
 	mode := &serial.Mode{
 		BaudRate: 115200,
 	}
 	port, err := serial.Open("/dev/ttyUSB0", mode)
+	if err != nil {
+		log.Fatal(err)
+	}
 	defer port.Close()
-	if err != nil {
-		log.Fatal(err)
-	}
+	filename := "src/print_loop.txt"
+	program := ReadProgram(filename)
 
-	//execute program
-	port.Write([]byte("edit 1 \r"))
-	time.Sleep(100 * time.Millisecond)
-	n, err := port.Write(program)
-	if err != nil {
-		log.Fatal(err)
-	}
+	go programExecuteLoop(program, port)
+	time.Sleep(time.Second)
 
-	fmt.Printf("Sent %v bytes\n", n)
-	time.Sleep(100 * time.Millisecond)
-	port.Write([]byte("edit 0 \r"))
-	time.Sleep(500 * time.Millisecond)
-
-	port.Write([]byte("run \r"))
-
-	buff := make([]byte, 1000)
+	buff := make([]byte, 300)
 	for {
-		// Reads up to 100 bytes
 		n, err := port.Read(buff)
 		if err != nil {
 			log.Fatal(err)
@@ -68,11 +77,53 @@ func main() {
 
 		receivedData := string(buff[:n])
 		fmt.Printf("%s", receivedData)
-
-		if strings.Contains(receivedData, "EOF") {
-			fmt.Println("\nEOF")
-			break
-		}
 	}
 
 }
+
+// func programExecute(program string) {
+// 	mode := &serial.Mode{
+// 		BaudRate: 115200,
+// 	}
+// 	port, err := serial.Open("/dev/ttyUSB0", mode)
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	defer port.Close()
+
+// 	//execute program
+// 	fmt.Println("serial connected")
+// 	port.Write([]byte("edit 1 \r"))
+// 	time.Sleep(100 * time.Millisecond)
+// 	n, err := port.Write([]byte(program))
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+
+// 	fmt.Printf("Sent %v bytes \n", n)
+// 	time.Sleep(100 * time.Millisecond)
+// 	port.Write([]byte("edit 0 \r"))
+// 	time.Sleep(100 * time.Millisecond)
+// 	buff := make([]byte, 1000)
+// 	eofFound := false
+
+// 	port.Write([]byte("run \r"))
+
+// 	for !eofFound {
+// 		// Reads up to 100 bytes
+// 		n, err := port.Read(buff)
+// 		if err != nil {
+// 			log.Fatal(err)
+// 		}
+
+// 		receivedData := string(buff[:n])
+// 		fmt.Printf("%s", receivedData)
+
+// 		if strings.Contains(receivedData, "EOF") {
+// 			fmt.Println("\nEOF")
+// 			eofFound = true
+// 		}
+// 		// log.Fatal("can't recive valid data")
+// 	}
+
+// }
