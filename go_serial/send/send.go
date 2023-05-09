@@ -62,7 +62,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer port.Close()
-	filename := "../basic_src/send_loo.txt"
+	filename := "../basic_src/send_loop.txt"
 	program := ReadProgram(filename)
 	go programExecuteLoop(program, port)
 	time.Sleep(time.Second)

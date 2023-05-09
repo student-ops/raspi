@@ -45,6 +45,9 @@ func programExecuteLoop(program string, port serial.Port) {
 	}
 
 	fmt.Printf("Sent %v bytes \n", n)
+	port.Write([]byte("own =0\r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("dst =0\r"))
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("edit 0 \r"))
 	time.Sleep(100 * time.Millisecond)
