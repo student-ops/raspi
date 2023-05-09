@@ -1,0 +1,4 @@
+10 Bme A,B,C
+20 Txd=wChr(A);wChr(B);wChr(C)
+30 Send
+40 Goto 10
