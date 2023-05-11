@@ -46,24 +46,19 @@ def main():
     process = subprocess.Popen(
         cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, cwd=work_dir)
     print(f"Current working directory: {os.getcwd()}")
-    first_line = True
 
+    # 検討
     try:
         while True:
             output = process.stdout.readline()
             stripped_output = output.strip()
             print(f"output: {output}")
-            if first_line:
-                first_line = False
             if output:
                 stripped_output = output.strip()
                 print(stripped_output)
                 if "@" in stripped_output:
                     numbers = extract_numbers(stripped_output)
                     send_post_request(numbers)
-            # if error:
-            #     print(f"Goプログラムのエラー出力: {error.strip()}")
-            #     break
 
     except KeyboardInterrupt:
         # Ctrl+Cが押された場合、サブプロセスを終了
