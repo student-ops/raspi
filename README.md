@@ -6,4 +6,4 @@ ptest デイレクトリには入らす。
 
 `. ptest/bin/activate`
 
-hello
+hello good after noon
