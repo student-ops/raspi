@@ -23,8 +23,9 @@ rmeote -a リモートとして登録されているものを一覧する
 作業開始前の更新 & 確認
 
 ```
-git fetch --all &&
-git pull &&
+
+git fetch --all 
+git pull origin <branch name>
 git branch -a
 ```
 
@@ -46,5 +47,6 @@ git push -u <origin> <localBranch>
 ## python /tests/ ファイル名
 wisun通信無しでprint -> request : wisun.py<br>
 wisun通信受信 -> request :wisun_receive.py<br>
-wisun通信送信 : wisun_send.py<br>
+wisun通信送信 : wisun_send.sh<br>
 
+wisun_send.py
