@@ -1,4 +1,5 @@
 10 Bme A,B,C
 20 Txd=wChr(A);wChr(B);wChr(C)
 30 Send
-40 Goto 10
+40 Delay 3000
+50 Goto 10
