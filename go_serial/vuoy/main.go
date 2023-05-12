@@ -48,9 +48,11 @@ func programExecute(program string, port serial.Port) {
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("edit 0 \r"))
 	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("own = 1 \r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("dst =1\r"))
 
 	port.Write([]byte("run \r"))
-
 }
 
 func main() {
@@ -65,17 +67,5 @@ func main() {
 	filename := "../basic_src/send_loop.txt"
 	program := ReadProgram(filename)
 	go programExecute(program, port)
-	time.Sleep(time.Second)
-
-	buff := make([]byte, 300)
-	for {
-		n, err := port.Read(buff)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		receivedData := string(buff[:n])
-		fmt.Printf("%s", receivedData)
-	}
-
+	return
 }
