@@ -46,6 +46,6 @@ git push -u <origin> <localBranch>
 ## python /tests/ ファイル名
 wisun通信無しでprint -> request : wisun.py<br>
 wisun通信受信 -> request :wisun_receive.py<br>
-wisun通信送信 : wisun_send.py<br>
+wisun通信送信 : wisun_send.sh<br>
 
 wisun_send.py
