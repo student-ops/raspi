@@ -10,4 +10,5 @@ edit 1
 own = 1
 dst = 0 
 ssave
+Auto="ploac:run"
 
