@@ -54,13 +54,17 @@ func programExecute(program string, port serial.Port) {
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("dst =0 \r"))
 	time.Sleep(100 * time.Millisecond)
+	auto := "Auto=\"pload:run\" \r"
+	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("ssave \r"))
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("psave \r"))
-	time.Sleep(100 * time.Millisecond)
-	auto := "Auto=\"pload:run\" \r"
+
 	port.Write([]byte(auto))
 	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("?auto \r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("run \r"))
 }
 
 func main() {
