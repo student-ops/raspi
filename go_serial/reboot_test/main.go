@@ -52,6 +52,12 @@ func programExecute(program string, port serial.Port) {
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("dst =0 \r"))
 	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("ssave \r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("psave \r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte(` Auto="ploac:run" \r`))
+	time.Sleep(100 * time.Millisecond)
 
 }
 
