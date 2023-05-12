@@ -14,8 +14,8 @@ hello good after noon
 基本
 ```
 branch -a ブランチ一覧
-checkout ブランチの切り替え
-checkout -b ブランチの作成 & 切り替え
+checkout <branch name>ブランチの切り替え
+checkout -b <branc name> ブランチの作成 & 切り替え
 push <origin> <branch>
 pull <origin> <branch>
 rmeote -a リモートとして登録されているものを一覧する
