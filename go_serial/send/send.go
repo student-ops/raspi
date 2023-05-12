@@ -33,7 +33,7 @@ func ReadProgram(filename string) string {
 
 	return string(program)
 }
-func programExecuteLoop(program string, port serial.Port) {
+func programExecute(program string, port serial.Port) {
 
 	//execute program
 	fmt.Println("serial connected")
@@ -64,7 +64,7 @@ func main() {
 	defer port.Close()
 	filename := "../basic_src/send_loop.txt"
 	program := ReadProgram(filename)
-	go programExecuteLoop(program, port)
+	go programExecute(program, port)
 	time.Sleep(time.Second)
 
 	buff := make([]byte, 300)
