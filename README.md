@@ -23,9 +23,9 @@ rmeote -a リモートとして登録されているものを一覧する
 作業開始前の更新 & 確認
 
 ```
-git fetch --all 
-git pull
-git branch -a
+git fetch --all &&
+git pull &&
+git branch -a &&
 ```
 
 リモートブランチをローカルに持ってくる
