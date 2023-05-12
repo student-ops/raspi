@@ -8,9 +8,10 @@ gtkterm -p /dev/ttyUSB0 -s 115200 -e  -L &
 sleep 3
 
 if [ "$response" == "1" ]; then
-    go run gateway/main.go
+    go run main.go
 elif [ "$response" == "2" ]; then
-    go run vuoy/main.go
+    cd vuoy
+    go run main.go
 elif [ "$response" == "3" ]; then
     go run print_loop/main.go
 else
