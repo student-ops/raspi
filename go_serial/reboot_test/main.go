@@ -47,6 +47,8 @@ func programExecute(program string, port serial.Port) {
 	fmt.Printf("Sent %v bytes \n", n)
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("edit 0 \r"))
+
+	// command mode 
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("own = 1 \r"))
 	time.Sleep(100 * time.Millisecond)
@@ -56,7 +58,7 @@ func programExecute(program string, port serial.Port) {
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("psave \r"))
 	time.Sleep(100 * time.Millisecond)
-	port.Write([]byte(` Auto="ploac:run" \r`))
+	port.Write([]byte("Auto="pload:run" \r"))
 	time.Sleep(100 * time.Millisecond)
 
 }
