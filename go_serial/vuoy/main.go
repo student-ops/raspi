@@ -52,6 +52,7 @@ func programExecute(program string, port serial.Port) {
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("dst =1\r"))
 	time.Sleep(100 * time.Millisecond)
+	
 
 	port.Write([]byte("run \r"))
 }
