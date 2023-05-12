@@ -29,7 +29,7 @@ git pull
 git branch -a
 ```
 
-リモートを持ってくる
+リモートブランチをローカルに持ってくる
 ```
 // ローカルの更新
 git fetch --all 
