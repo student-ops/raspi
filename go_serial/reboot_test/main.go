@@ -39,6 +39,14 @@ func programExecute(program string, port serial.Port) {
 	fmt.Println("serial connected")
 	port.Write([]byte("edit 1 \r"))
 	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("New \r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("edit 0 \r"))
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("run \r"))
+
+	time.Sleep(100 * time.Millisecond)
+	port.Write([]byte("edit 1 \r"))
 	n, err := port.Write([]byte(program))
 	if err != nil {
 		log.Fatal(err)
