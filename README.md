@@ -24,7 +24,7 @@ rmeote -a リモートとして登録されているものを一覧する
 
 ```
 git fetch --all 
-git pull
+git pull origin <branch name>
 git branch -a
 ```
 
