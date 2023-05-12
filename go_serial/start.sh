@@ -15,7 +15,7 @@ elif [ "$response" == "2" ]; then
     go run main.go
 elif [ "$response" == "3" ]; then
     cd print_loop
-    go run print_loop/main.go
+    go run main.go
 else
     echo "Invalid input. Please enter 1, 2, or 3."
 fi
