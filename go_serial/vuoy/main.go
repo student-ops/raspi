@@ -40,6 +40,12 @@ func PortWrite(program string) {
 	time.Sleep(100 * time.Millisecond)
 }
 func programExecute(program string) {
+	// delete program
+	PortWrite("edit 1")
+	PortWrite("New")
+	PortWrite("psave")
+	PortWrite("run")
+	PortWrite("edit 0")
 
 	PortWrite("edit 1")
 	n, err := Port.Write([]byte(program))
