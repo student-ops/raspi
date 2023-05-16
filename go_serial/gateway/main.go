@@ -78,7 +78,7 @@ func main() {
 		}
 
 		receivedData := string(buff[:n])
-		fmt.Printf("%s", receivedData)
+		fmt.Printf("%s \n", receivedData)
 	}
 
 }
