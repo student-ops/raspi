@@ -1,14 +1,14 @@
-edit 0
+Auto="pload:run"
+eown = 1
+dst = 0 
+dit 1
 10 Bme A,B,C
 20 Txd=wChr(A);wChr(B);wChr(C)
 30 Send
 40 Print "send"
 50 Delay 3000
 60 Goto 10
-
-edit 1
-own = 1
-dst = 0 
 ssave
-Auto="ploac:run"
+psave
+edit 0
 
