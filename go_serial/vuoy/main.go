@@ -49,7 +49,6 @@ func programExecute(program string) {
 	fmt.Printf("Sent %v bytes \n", n)
 	PortWrite("own = 1")
 	PortWrite("dst = 0")
-	PortWrite("edit 1")
 	PortWrite("Auto=\"pload:run\"")
 	PortWrite("ssave")
 	PortWrite("psave")
