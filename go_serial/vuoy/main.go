@@ -1,10 +1,9 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
+	"lib"
 	"log"
-	"os"
 	"time"
 
 	"go.bug.st/serial"
@@ -12,29 +11,6 @@ import (
 
 var Port serial.Port
 
-func ReadProgram(filename string) string {
-	file, err := os.Open(filename)
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	var programLines []string
-	for scanner.Scan() {
-		programLines = append(programLines, scanner.Text()+"\r\n") // ここを変更
-	}
-	if err := scanner.Err(); err != nil {
-		panic(err)
-	}
-
-	program := []byte{}
-	for _, line := range programLines {
-		program = append(program, []byte(line)...)
-	}
-
-	return string(program)
-}
 func PortWrite(program string) {
 	Port.Write([]byte(program + "\r"))
 	time.Sleep(100 * time.Millisecond)
@@ -73,6 +49,6 @@ func main() {
 	fmt.Println("serial connected")
 	defer Port.Close()
 	filename := "../basic_src/send_loop.txt"
-	program := ReadProgram(filename)
+	program := lib.ReadProgram(filename)
 	programExecute(program)
 }
