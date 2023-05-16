@@ -10,6 +10,8 @@ import (
 	"go.bug.st/serial"
 )
 
+var Port serial.Port
+
 func ReadProgram(filename string) string {
 	file, err := os.Open(filename)
 	if err != nil {
@@ -33,38 +35,32 @@ func ReadProgram(filename string) string {
 
 	return string(program)
 }
+func PortWrite(program string) {
+	Port.Write([]byte(program + "\r"))
+	time.Sleep(100 * time.Millisecond)
+}
 func programExecute(program string, port serial.Port) {
 
-	//execute program
-	fmt.Println("serial connected")
-	port.Write([]byte("edit 1 \r"))
-	time.Sleep(100 * time.Millisecond)
+	PortWrite("edit 0")
 	n, err := port.Write([]byte(program))
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	fmt.Printf("Sent %v bytes \n", n)
-	time.Sleep(100 * time.Millisecond)
-	port.Write([]byte("edit 0 \r"))
-	time.Sleep(100 * time.Millisecond)
-	port.Write([]byte("own = 1 \r"))
-	time.Sleep(100 * time.Millisecond)
-	port.Write([]byte("dst =0 \r"))
-	time.Sleep(100 * time.Millisecond)
-
+	PortWrite("edit 0")
 }
 
 func main() {
 	mode := &serial.Mode{
 		BaudRate: 115200,
 	}
-	port, err := serial.Open("/dev/ttyUSB0", mode)
+	Port, err := serial.Open("/dev/ttyUSB0", mode)
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer port.Close()
+	fmt.Println("serial connected")
+	defer Port.Close()
 	filename := "../basic_src/send_loop.txt"
 	program := ReadProgram(filename)
-	programExecute(program, port)
+	programExecute(program, Port)
 }
