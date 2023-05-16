@@ -39,14 +39,20 @@ func PortWrite(program string) {
 	Port.Write([]byte(program + "\r"))
 	time.Sleep(100 * time.Millisecond)
 }
-func programExecute(program string, port serial.Port) {
+func programExecute(program string) {
 
-	PortWrite("edit 0")
-	n, err := port.Write([]byte(program))
+	PortWrite("edit 1")
+	n, err := Port.Write([]byte(program))
 	if err != nil {
 		log.Fatal(err)
 	}
 	fmt.Printf("Sent %v bytes \n", n)
+	PortWrite("own = 1")
+	PortWrite("dst = 0")
+	PortWrite("edit 1")
+	PortWrite("Auto=\"pload:run\"")
+	PortWrite("ssave")
+	PortWrite("psave")
 	PortWrite("edit 0")
 }
 
@@ -54,7 +60,8 @@ func main() {
 	mode := &serial.Mode{
 		BaudRate: 115200,
 	}
-	Port, err := serial.Open("/dev/ttyUSB0", mode)
+	var err error
+	Port, err = serial.Open("/dev/ttyUSB0", mode)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -62,5 +69,5 @@ func main() {
 	defer Port.Close()
 	filename := "../basic_src/send_loop.txt"
 	program := ReadProgram(filename)
-	programExecute(program, Port)
+	programExecute(program)
 }
