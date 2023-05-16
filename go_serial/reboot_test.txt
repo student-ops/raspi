@@ -1,5 +1,5 @@
 Auto="pload:run"
-eown = 1
+own = 1
 dst = 0 
 dit 1
 10 Bme A,B,C
