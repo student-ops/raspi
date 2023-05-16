@@ -5,7 +5,7 @@ echo "Please enter number:"
 read response
 sudo chmod 777 /dev/ttyUSB0
 gtkterm -p /dev/ttyUSB0 -s 115200 -e  -L &
-sleep 3
+sleep 10
 
 if [ "$response" == "1" ]; then
     cd gateway

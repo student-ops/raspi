@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"lib"
 	"log"
 	"time"
+
+	"test/lib"
 
 	"go.bug.st/serial"
 )
