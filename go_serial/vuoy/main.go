@@ -21,7 +21,6 @@ func programExecute(program string) {
 	PortWrite("edit 1")
 	PortWrite("New")
 	PortWrite("psave")
-	PortWrite("run")
 	PortWrite("edit 0")
 
 	PortWrite("edit 1")
