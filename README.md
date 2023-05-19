@@ -51,3 +51,8 @@ wisun通信受信 -> request :wisun_receive.py<br>
 wisun通信送信 : wisun_send.sh<br>
 
 wisun_send.py
+
+## ブイプログラム書き換え後
+
+電源入れるとプログラムが起動し、そのプログラムが動いているとシリアルの入力ができない。
+gtktermからプログラムを停止して、シリアル書き込み
