@@ -80,6 +80,7 @@ if __name__ == "__main__":
     url = ""
     if(sys.argv[0] != None):
         url = 'http://10.17.42.2:8080/handle'
-    url = fetch_slack.fetch_slack()
-    print(url)
+    else:
+        url = fetch_slack.fetch_slack()
+        print(url)
     main()
