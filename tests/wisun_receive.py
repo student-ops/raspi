@@ -20,12 +20,12 @@ def send_post_request(numbers):
     headers = {
         'Content-Type': 'application/json'
     }
-    print(numbers)
-    path = "../data/gateway_data.txt"    
-    with open(path, mode='a') as f:
-        for s in range(len(numbers)):
-            f.write(str(numbers[s])+",")
-        f.write("\n")
+    # print(numbers)
+    # path = "../data/gateway_data.txt"    
+    # with open(path, mode='a') as f:
+    #     for s in range(len(numbers)):
+    #         f.write(str(numbers[s])+",")
+    #     f.write("\n")
     now = datetime.utcnow()
     formatted_date = now.strftime('%Y-%m-%dT%H:%M:%SZ')
     data = {
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     url = ""
     if(sys.argv[0] != None):
         url = 'http://10.17.42.2:8080/handle'
-    else:
-        url = fetch_slack.fetch_slack()
-        print(url)
+    
+    url = fetch_slack.fetch_slack() + "/handle"
+    print(url)
     main()
