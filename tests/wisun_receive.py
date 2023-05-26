@@ -66,7 +66,7 @@ def main():
 
 
 if __name__ == "__main__":
-    work_dir = "../go_serial/receive_print"
+    work_dir = "../go_serial/gateway"
     cmd = ["go", "run", "main.go"]
-    url = 'http://10.17.42.2:8080/handle'
+    url = 'http://10.17.42.3:8080/handle'
     main()
