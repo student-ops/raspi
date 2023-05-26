@@ -30,7 +30,7 @@ def send_post_request(numbers):
                 "tempreture": numbers[0],
                 "moisuture": numbers[1],
                 "airPressure": numbers[2],
-                "rssi": numbers[3],
+                "rssi": int(numbers[3]),
             },
         ]
     }
