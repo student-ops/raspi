@@ -20,12 +20,12 @@ def send_post_request(numbers):
     headers = {
         'Content-Type': 'application/json'
     }
-    print(numbers)
-    path = "../data/gateway_data.txt"    
-    with open(path, mode='a') as f:
-        for s in range(len(numbers)):
-            f.write(str(numbers[s])+",")
-        f.write("\n")
+    # print(numbers)
+    # path = "../data/gateway_data.txt"    
+    # with open(path, mode='a') as f:
+    #     for s in range(len(numbers)):
+    #         f.write(str(numbers[s])+",")
+    #     f.write("\n")
     now = datetime.utcnow()
     formatted_date = now.strftime('%Y-%m-%dT%H:%M:%SZ')
     data = {
