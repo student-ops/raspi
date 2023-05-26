@@ -1,0 +1,8 @@
+10 Recv 10000
+20 If Stat<>10 Then 10
+30 EndIf
+40 A=Rxdw(8)
+50 B=Rxdw(10)
+60 C=Rxdw(12)
+70 PRINT "@"A/10;".";A%10;"@"B/10;".";B%10;"@"C/10;".";C%10,"\r";
+80 Goto 10
