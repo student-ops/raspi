@@ -65,7 +65,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer port.Close()
-	filename := "../basic_src/recive_print.txt"
+	filename := "../basic_src/recive_print_rssi.txt"
 	program := ReadProgram(filename)
 	go programExecuteLoop(program, port)
 	time.Sleep(time.Second)
