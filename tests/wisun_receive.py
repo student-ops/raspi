@@ -20,17 +20,24 @@ def send_post_request(numbers):
         'Content-Type': 'application/json'
     }
     print(numbers)
+    path = "../data/gateway_data.txt"    
+    with open(path, mode='a') as f:
+        for s in range(len(numbers)):
+            f.write(str(numbers[s])+",")
+        f.write("\n")
     now = datetime.utcnow()
     formatted_date = now.strftime('%Y-%m-%dT%H:%M:%SZ')
+    print(str(numbers[0]) +str(int(numbers[0])))
     data = {
         "surroundings": [
             {
                 "number": 1,
                 "timestamp": formatted_date,
-                "tempreture": numbers[0],
-                "moisuture": numbers[1],
-                "airPressure": numbers[2],
-                "rssi": int(numbers[3]),
+                "rssi": int(numbers[0]),
+                "tempreture": numbers[1],
+                "moisuture": numbers[2],
+                "airPressure": numbers[3],
+                
             },
         ]
     }
