@@ -6,6 +6,7 @@ from datetime import datetime
 import requests
 import json
 import sys
+import fetch_slack
 
 def extract_numbers(output):
     # Extract numbers from the output using a regular expression
@@ -72,8 +73,13 @@ def main():
 
 
 if __name__ == "__main__":
+    
     work_dir = "../go_serial/gateway"
     cmd = ["go", "run", "main.go"]
-    url = 'http://10.17.42.2:8080/handle'
-    #url = 'http://47cd-61-114-97-102.ngrok-free.app/handle'
+    args = sys.argv
+    url = ""
+    if(sys.argv[0] != None):
+        url = 'http://10.17.42.2:8080/handle'
+    url = fetch_slack.fetch_slack()
+    print(url)
     main()
