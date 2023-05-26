@@ -7,7 +7,6 @@ import requests
 import json
 import sys
 
-
 def extract_numbers(output):
     # Extract numbers from the output using a regular expression
     number_strings = re.findall(r"[-+]?\d*\.\d+|\d+", output)
@@ -31,6 +30,7 @@ def send_post_request(numbers):
                 "tempreture": numbers[0],
                 "moisuture": numbers[1],
                 "airPressure": numbers[2],
+                "rssi": numbers[3],
             },
         ]
     }
