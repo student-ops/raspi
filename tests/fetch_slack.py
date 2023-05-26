@@ -27,6 +27,7 @@ def fetch_slack():
             last_message = messages[0]
             message_text = last_message["text"]
             pattern = r"https[^>]*"
+            print(message_text)
             result = re.findall(pattern, message_text)
             return result[0]
         else:
