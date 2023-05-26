@@ -1,0 +1,14 @@
+Auto="pload:run"
+own = 1
+dst = 0 
+dit 1
+10 Bme A,B,C
+20 Txd=wChr(A);wChr(B);wChr(C)
+30 Send
+40 Print "send"
+50 Delay 3000
+60 Goto 10
+ssave
+psave
+edit 0
+
