@@ -77,10 +77,9 @@ if __name__ == "__main__":
     work_dir = "../go_serial/gateway"
     cmd = ["go", "run", "main.go"]
     args = sys.argv
-    url = ""
-    if(sys.argv[0] != None):
-        url = 'http://10.17.42.2:8080/handle'
+    url = "https://3935-153-250-60-60.ngrok-free.app"
+    url = url + "/handle"
     
-    url = fetch_slack.fetch_slack() + "/handle"
+    
     print(url)
     main()

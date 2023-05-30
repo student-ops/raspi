@@ -16,8 +16,10 @@ func PortWrite(program string) {
 	Port.Write([]byte(program + "\r"))
 	time.Sleep(100 * time.Millisecond)
 }
-func programExecute(program string) {
+func ProgramExecuteAuto(program string) {
 	// delete program
+	Port.Write([]byte{0x03})
+	time.Sleep(100 * time.Millisecond)
 	PortWrite("edit 1")
 	PortWrite("New")
 	PortWrite("psave")
@@ -50,5 +52,5 @@ func main() {
 	defer Port.Close()
 	filename := "../basic_src/send_loop.txt"
 	program := lib.ReadProgram(filename)
-	programExecute(program)
+	ProgramExecuteAuto(program)
 }
