@@ -47,7 +47,7 @@ func programExecuteLoop(program string, port serial.Port) {
 	fmt.Printf("Sent %v bytes \n", n)
 	port.Write([]byte("own =0\r"))
 	time.Sleep(100 * time.Millisecond)
-	port.Write([]byte("dst =0\r"))
+	port.Write([]byte("dst =1\r"))
 	time.Sleep(100 * time.Millisecond)
 	port.Write([]byte("edit 0 \r"))
 	time.Sleep(100 * time.Millisecond)
@@ -65,7 +65,7 @@ func main() {
 		log.Fatal(err)
 	}
 	defer port.Close()
-	filename := "../basic_src/recive_print.txt"
+	filename := "../basic_src/recive_print_rssi.txt"
 	program := ReadProgram(filename)
 	go programExecuteLoop(program, port)
 	time.Sleep(time.Second)
@@ -78,7 +78,7 @@ func main() {
 		}
 
 		receivedData := string(buff[:n])
-		fmt.Printf("%s", receivedData)
+		fmt.Printf("%s \n", receivedData)
 	}
 
 }

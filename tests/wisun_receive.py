@@ -6,11 +6,11 @@ from datetime import datetime
 import requests
 import json
 import sys
-
+import fetch_slack
 
 def extract_numbers(output):
     # Extract numbers from the output using a regular expression
-    number_strings = re.findall(r"[-+]?\d*\.\d+|\d+", output)
+    number_strings = re.findall(r"[-+]?\d*\.?\d+", output)
     # Convert the strings to float
     numbers = [float(num_str) for num_str in number_strings]
     return numbers
@@ -20,7 +20,12 @@ def send_post_request(numbers):
     headers = {
         'Content-Type': 'application/json'
     }
-    print(numbers)
+    # print(numbers)
+    # path = "../data/gateway_data.txt"    
+    # with open(path, mode='a') as f:
+    #     for s in range(len(numbers)):
+    #         f.write(str(numbers[s])+",")
+    #     f.write("\n")
     now = datetime.utcnow()
     formatted_date = now.strftime('%Y-%m-%dT%H:%M:%SZ')
     data = {
@@ -28,9 +33,11 @@ def send_post_request(numbers):
             {
                 "number": 1,
                 "timestamp": formatted_date,
-                "tempreture": numbers[0],
-                "moisuture": numbers[1],
-                "airPressure": numbers[2],
+                "rssi": int(numbers[0]),
+                "tempreture": numbers[1],
+                "moisuture": numbers[2],
+                "airPressure": numbers[3],
+                
             },
         ]
     }
@@ -66,7 +73,11 @@ def main():
 
 
 if __name__ == "__main__":
-    work_dir = "../go_serial/receive_print"
+    
+    work_dir = "../go_serial/gateway"
     cmd = ["go", "run", "main.go"]
-    url = 'http://10.17.42.2:8080/handle'
+    args = sys.argv
+    url = fetch_slack.fetch_slack()
+    url = url + "/handle"
+    print(url)
     main()
