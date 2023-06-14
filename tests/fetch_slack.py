@@ -29,7 +29,7 @@ def fetch_slack():
             last_message = messages[0]
             message_text = last_message["text"]
 
-            print(message_text)
+            # print(message_text)
             pattern = "<(https?://[^>]*)"
 
             result = re.findall(pattern, message_text)
@@ -45,4 +45,5 @@ def fetch_slack():
 
 
 if __name__ == "__main__":
-    fetch_slack()
+    a = fetch_slack()
+    print(a)
